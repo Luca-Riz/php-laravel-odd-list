@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="container">
     <div class="row">
       <div class="col-sm-6" v-for="post in posts" :key="post.id">
@@ -7,12 +8,41 @@
             <h5 class="card-title">{{ post.title }}</h5>
             <p>{{ formatData(post.created_at) }}</p>
             <p class="card-text">{{ truncate(post.content, 150) }}</p>
-            <a href="#" class="btn btn-primary">Dettagli</a>
+            <router-link :to="{name: 'post-detail', params:{ slug: post.slug }}" class="btn btn-primary">
+              Dettagli
+            </router-link>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+    <!-- num pagina previos and next -->
+  <div class="container mt-5">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" 
+        :class="{'disabled' : currentPage === 1}">
+          <button class="page-link" href="#" @click="getPosts(currentPage - 1)">Previous</button>
+        </li>
+
+        <li class="page-item"
+          :class="{'active' : currentPage == i}"
+          v-for="i in lastPage" :key="i"
+          @click="getPosts(i)">
+            <a class="page-link" href="#"> {{ i }} </a>
+        </li>
+
+        <li class="page-item"
+        :class="{'disabled' : currentPage === lastPage}">
+          <button class="page-link" href="#" @click="getPosts(currentPage + 1)">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- end num pagina previos and next -->
+
+</div>
 </template>
 
 <script>
