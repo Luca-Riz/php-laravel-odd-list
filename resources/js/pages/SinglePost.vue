@@ -8,6 +8,8 @@
         </h5>
         <p class="card-text">{{ post.content }}</p>
         <PostTag :tags="post.tags"/>
+
+        <!-- qui sotto decommentare se non si vogliono usare le props -->
         <!-- <div v-if="post.tags">
           <span class="badge badge-success" v-for="tag in post.tags" :key="tag.id">
             {{ tag.name }}
