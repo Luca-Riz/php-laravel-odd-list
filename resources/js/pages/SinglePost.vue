@@ -7,11 +7,13 @@
           {{ post.category.name }}
         </h5>
         <p class="card-text">{{ post.content }}</p>
-        <div v-if="post.tags">
+        <PostTag :tags="post.tags"/>
+        <!-- <div v-if="post.tags">
           <span class="badge badge-success" v-for="tag in post.tags" :key="tag.id">
             {{ tag.name }}
           </span>
-        </div>
+        </div> -->
+
       </div>
     </div>
   </div>
@@ -19,9 +21,12 @@
 
 <script>
 
-
+import PostTag from '../components/PostTag';
 export default {
   name: "SinglePost",
+  components: {
+    PostTag
+  },
   data() {
     return {
       post: []
