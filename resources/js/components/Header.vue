@@ -44,6 +44,10 @@ export default {
           routeName: 'about'
         },
         {
+          label: 'I miei Posts',
+          routeName: 'post'
+        },
+        {
           label: 'Contatti',
           routeName: 'contact'
         }
