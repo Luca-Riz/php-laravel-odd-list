@@ -34,7 +34,9 @@ export default {
           this.post = response.data.results;
           console.log(this.post);
         })
-        .catch();
+        .catch(error => {
+          console.log(error);
+        });
   }
 };
 </script>

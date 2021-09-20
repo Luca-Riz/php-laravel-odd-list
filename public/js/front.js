@@ -2492,7 +2492,9 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/post/' + this.$route.params.slug).then(function (response) {
       _this.post = response.data.results;
       console.log(_this.post);
-    })["catch"]();
+    })["catch"](function (error) {
+      console.log(error);
+    });
   }
 });
 
